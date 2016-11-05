@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: utf-8
+  database: flickrr_development
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: utf-8
+  database: flickrr_production
+  pool: 5
