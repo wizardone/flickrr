@@ -4,6 +4,13 @@ class Flickrr < Sinatra::Base
   end
 
   post '/register' do
-    puts params
+    @user = User.new(params[:user])
+    if @user.save
+      redirect '/gallery'
+    else
+      # TODO: add the proper messages
+      flash[:error] = 'Email or Password are invalid'
+      redirect :register
+    end
   end
 end

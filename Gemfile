@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Downgrade to 1.4.7, because of "great" support for sinatra-activerecord
 gem 'sinatra', '1.4.7'
+gem 'sinatra-flash'
 
 # Use thin as server
 gem 'thin'
@@ -15,7 +16,11 @@ gem 'rake'
 gem 'haml'
 
 # Ze tests
-gem 'rspec', group: :test
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+  gem 'database_cleaner'
+end
 
 # Let me debug
 gem 'byebug', group: [:development, :test]
