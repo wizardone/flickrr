@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe 'register page' do
   describe 'GET register' do
+
     it 'shows the register page' do
       get '/register'
 
@@ -25,6 +26,13 @@ RSpec.describe 'register page' do
       expect(last_response).to be_ok
       expect(last_request.url).to eq('http://example.org/gallery')
     end
-  end
 
+    it 'renders the registration form if there are errors' do
+      post '/register', 'user[email]=wat?'
+      follow_redirect!
+
+      expect(last_response).to be_ok
+      expect(last_request.url).to eq('http://example.org/register')
+    end
+  end
 end

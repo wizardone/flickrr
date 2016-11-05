@@ -1,0 +1,9 @@
+.box
+  -if session[:user_id]
+    %p
+      Hi there!
+      %a{ :href => "/logout", :title => "Logout" } Logout
+  -else
+    %a{ :href => "/login", :title => "Login" } Login
+    %a{ :href => "/register", :title => "Register" } Register
+=yield

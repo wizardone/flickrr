@@ -1,11 +1,12 @@
 class Flickrr < Sinatra::Base
   get '/register' do
-    haml :register
+    haml :register, layout: nil
   end
 
   post '/register' do
     @user = User.new(params[:user])
     if @user.save
+      session[:user_id] = @user.id
       redirect '/gallery'
     else
       # TODO: add the proper messages

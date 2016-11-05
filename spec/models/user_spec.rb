@@ -18,4 +18,20 @@ RSpec.describe User do
       expect(user.errors.messages).to include ({ password: ['can\'t be blank'] })
     end
   end
+
+  context 'password' do
+    it 'creates a hashed password for a user' do
+      password = '1234567'
+      user = subject.create(email: 'test@test.com', password: password)
+
+      expect(user.password).to eq(Digest::SHA1.hexdigest(password))
+    end
+  end
+
+  describe '#authenticate' do
+    it 'authenticates a given user' do
+      subject.create(email: 'test@test.com', password: '12345')
+      expect(User.find_by(email: 'test@test.com').authenticate('12345')).to be_truthy
+    end
+  end
 end

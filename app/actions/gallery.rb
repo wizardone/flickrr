@@ -1,5 +1,5 @@
 class Flickrr < Sinatra::Base
   get '/gallery' do
-    'gallery'
+    haml :gallery
   end
 end

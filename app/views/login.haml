@@ -1,0 +1,20 @@
+.content
+  .container
+    .row
+      .col-lg-12
+        - if flash[:error]
+          =styled_flash
+        %form.form-horizontal{ :action => "/login", :method => "post", :role => "form"}
+          %h1= 'Login'
+          .form-group
+            %label.control-label.col-lg-2{ :for => "email"} Email:
+            .col-lg-10
+              %input.form-control{ :name => "user[email]", :type => "text", :size => "30"}
+          .form-group
+            %label.control-label.col-lg-2{ :for => "password"} Password:
+            .col-lg-10
+              %input.form-control{ :name => "user[password]", :type => "password", :size => "30"}
+          %br
+          %br
+          %input.btn.btn-default{ :name => "submit", :type => "submit", :value => "Submit"}
+
