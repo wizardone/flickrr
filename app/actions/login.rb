@@ -1,6 +1,6 @@
 class Flickrr < Sinatra::Base
   get '/login' do
-    haml :login, layout: nil
+    haml :login, layout: :form
   end
 
   post '/login' do
