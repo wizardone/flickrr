@@ -15,10 +15,14 @@ gem 'rake'
 # Views
 gem 'haml'
 
+# Flickr integration
+gem 'flickr.rb'
+
 # Ze tests
 group :test do
   gem 'rspec'
   gem 'rack-test'
+  gem 'vcr'
   gem 'database_cleaner'
   gem 'codecov', require: false
 end

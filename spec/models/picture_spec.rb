@@ -17,7 +17,7 @@ RSpec.describe Picture do
       picture = subject.new(params)
 
       expect(picture.url)
-        .to eq("http://farm#{params[:farm_id]}.staticflickr.com/#{params[:server_id]}/#{params[:id]}_#{params[:secret]}")
+        .to eq("http://farm#{params[:farm_id]}.staticflickr.com/#{params[:server_id]}/#{params[:id]}_#{params[:secret]}.jpg")
     end
   end
 end

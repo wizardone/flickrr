@@ -24,6 +24,8 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     eventmachine (1.2.0.1)
+    flickr.rb (1.2.1)
+      xml-simple (>= 1.0.7)
     haml (4.0.7)
       tilt
     i18n (0.7.0)
@@ -72,6 +74,8 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     url (0.3.2)
+    vcr (3.0.3)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -80,6 +84,7 @@ DEPENDENCIES
   byebug
   codecov
   database_cleaner
+  flickr.rb
   haml
   pg
   rack-test
@@ -89,6 +94,7 @@ DEPENDENCIES
   sinatra-activerecord (~> 2.0)
   sinatra-flash
   thin
+  vcr
 
 BUNDLED WITH
    1.12.5

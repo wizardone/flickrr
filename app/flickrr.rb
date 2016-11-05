@@ -24,10 +24,7 @@ class Flickrr < Sinatra::Base
   get '/' do
     # image paths
     # https://www.flickr.com/services/api/misc.urls.html
-    @random_image_url = ::FlickrService
-                        .new
-                        .recent_photo
-                        .url
+    @random_image_url = Picture.from_flickr(FlickrService.new.recent_photo).url
     haml :main
   end
 end

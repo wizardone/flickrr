@@ -1,12 +1,21 @@
 class Picture
   attr_reader :params
 
+  class << self
+    def from_flickr(flickr_photo)
+      new(id: flickr_photo['id'],
+          secret: flickr_photo['secret'],
+          farm_id: flickr_photo['farm'],
+          server_id: flickr_photo['server'])
+    end
+  end
+
   def initialize(**params)
     @params = params
   end
 
   def url
-    "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}"
+    "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}.jpg"
   end
 
   private
