@@ -12,7 +12,7 @@ RSpec.describe 'register page' do
 
   describe 'POST register' do
 
-    let(:data) { 'user[email]=stefan@test.com&user[password]=123456' }
+    let(:data) { { user: { email: 'test@test.com', password: '1234567' } } }
     it 'creates a new user' do
       expect {
         post '/register', data

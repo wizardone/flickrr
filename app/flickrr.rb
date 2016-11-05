@@ -27,6 +27,3 @@ class Flickrr < Sinatra::Base
     "Hi there!"
   end
 end
-
-require_relative 'actions/register'
-require_relative 'actions/gallery'
