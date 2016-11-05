@@ -15,15 +15,19 @@ class Flickrr < Sinatra::Base
 
   enable :sessions
 
-  before do
-    return if Config::SESSION_FREE_PAGES.include?(request.path)
-
+  before '/gallery' do
     unless session[:user_id]
-      halt "There is no active session, please <a href='/login'>Login</a> or <a href='/register'>Register</a>"
+      redirect to('/')
     end
   end
 
   get '/' do
-    "Hi there!"
+    # image paths
+    # https://www.flickr.com/services/api/misc.urls.html
+    @random_image_url = ::FlickrService
+                        .new
+                        .recent_photo
+                        .url
+    haml :main
   end
 end
