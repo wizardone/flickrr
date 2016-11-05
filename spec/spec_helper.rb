@@ -4,6 +4,12 @@ require 'rspec'
 require 'rack/test'
 require_relative '../app/flickrr'
 
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
 module RSpecMixin
   include Rack::Test::Methods
   def app() Flickrr end
