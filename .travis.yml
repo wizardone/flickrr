@@ -1,0 +1,13 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.3.0
+services:
+  - postgresql
+addons:
+  postgresql: "9.4"
+before_install: gem install bundler -v 1.12.5
+before_script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+script: bundle exec rspec spec/
