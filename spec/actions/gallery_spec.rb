@@ -46,6 +46,12 @@ RSpec.describe 'Gallery actions' do
           get '/gallery', { search: { text: 'australia'} }, 'rack.session' => { user_id: user.id }
         }.to change { History.count }.by(1)
       end
+
+      it 'does not save the search query in the history if you are going through pagination' do
+        expect {
+          get '/gallery', { search: { text: 'australia'}, page: 5 }, 'rack.session' => { user_id: user.id }
+        }.to_not change { History.count }
+      end
     end
   end
 end
