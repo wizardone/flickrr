@@ -1,0 +1,7 @@
+Search results here:
+%br
+- @photos.each do |photo|
+  %a{href: "#{photo.original_url}", target: '_blank'}
+    %img(src="#{photo.thumb_url}")
+%br
+= will_paginate(@photos)

@@ -17,14 +17,14 @@ class Flickrr < Sinatra::Base
 
   before '/gallery' do
     unless session[:user_id]
-      redirect to('/')
+      #redirect to('/')
     end
   end
 
   get '/' do
     # image paths
     # https://www.flickr.com/services/api/misc.urls.html
-    @random_image_url = Picture.from_flickr(FlickrService.new.recent_photo).url
+    @random_image_url = Picture.from_flickr(FlickrService.new.recent_photo).original_url
     haml :main
   end
 end

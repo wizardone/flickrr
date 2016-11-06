@@ -18,6 +18,8 @@ gem 'haml'
 # Flickr integration
 gem 'flickr.rb'
 
+gem 'will_paginate', '~> 3.1.1'
+
 # Ze tests
 group :test do
   gem 'rspec'

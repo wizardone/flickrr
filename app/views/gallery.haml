@@ -1,0 +1,16 @@
+.content
+  .container
+    .row
+      .col-lg-12
+        - if flash[:error]
+          =styled_flash
+        %form.form-horizontal{ :action => "/search", :method => "get", :role => "form"}
+          %h2= 'Search photos'
+          .form-group
+            %label.control-label.col-lg-2{ :for => "text"} Search in title, description or tags:
+            .col-lg-10
+              %input.form-control{ :name => "search[text]", :type => "text", :size => "30"}
+          %br
+          %br
+          %input.btn.btn-default{ :name => "submit", :type => "submit", :value => "Search"}
+

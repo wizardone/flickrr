@@ -1,6 +1,8 @@
 class Picture
   attr_reader :params
 
+  DEFAULT_SIZE = 't'.freeze
+
   class << self
     def from_flickr(flickr_photo)
       new(id: flickr_photo['id'],
@@ -14,8 +16,12 @@ class Picture
     @params = params
   end
 
-  def url
-    "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}.jpg"
+  def thumb_url
+    "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}_t.jpg"
+  end
+
+  def original_url
+    "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}_b.jpg"
   end
 
   private
@@ -34,5 +40,9 @@ class Picture
 
   def secret
     params[:secret]
+  end
+
+  def size
+    params[:size] || DEFAULT_SIZE
   end
 end
