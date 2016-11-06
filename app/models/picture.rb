@@ -8,7 +8,8 @@ class Picture
       new(id: flickr_photo['id'],
           secret: flickr_photo['secret'],
           farm_id: flickr_photo['farm'],
-          server_id: flickr_photo['server'])
+          server_id: flickr_photo['server'],
+          title: flickr_photo['title'])
     end
   end
 
@@ -26,6 +27,10 @@ class Picture
 
   def medium_url
     "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}_c.jpg"
+  end
+
+  def title
+    params[:title]
   end
 
   private

@@ -3,14 +3,15 @@ require 'spec_helper'
 RSpec.describe Picture do
   subject { described_class }
 
-  let(:params) { { id: 1, server_id: 2, farm_id: 3, secret: 'bogus' } }
+  let(:params) { { id: 1, server_id: 2, farm_id: 3, secret: 'bogus', title: 'some cool title' } }
 
   describe '.from_flickr' do
     it 'returns a new instance of Picture' do
       flickr_photo = { 'id' => 1,
                        'server' => 2,
                        'farm' => 3,
-                       'secret' => 'bogus' }
+                       'secret' => 'bogus',
+                       'title' => 'some cool title' }
       expect(Picture).to receive(:new).with(params)
 
       Picture.from_flickr(flickr_photo)

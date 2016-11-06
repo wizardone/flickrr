@@ -15,12 +15,12 @@ class Flickrr < Sinatra::Base
 
   enable :sessions
 
+  before do
+    @current_user = User.find(session[:user_id]) if session[:user_id]
+  end
+
   before %r{/(gallery)|(search)} do
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      redirect to('/') and return
-    end
+    redirect to('/login') if @current_user.nil?
   end
 
   get '/' do

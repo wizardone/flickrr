@@ -6,14 +6,14 @@ RSpec.describe 'Gallery actions' do
   end
 
   context 'not logged in' do
-    it 'redirects back to the main page' do
+    it 'redirects back to the login page' do
       VCR.use_cassette('flickr_recent_photo') do
         get '/search'
 
         follow_redirect!
 
         expect(last_response).to be_ok
-        expect(last_request.url).to eq('http://example.org/')
+        expect(last_request.url).to eq('http://example.org/login')
       end
     end
   end
