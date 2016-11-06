@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'main page' do
+RSpec.describe 'Logout actions' do
   describe 'GET logout' do
     it 'logs out the current user' do
       VCR.use_cassette('flickr_recent_photo') do

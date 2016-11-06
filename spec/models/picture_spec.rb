@@ -34,11 +34,20 @@ RSpec.describe Picture do
     end
   end
 
-  describe '#original_url' do
+  describe '#medium_url' do
     it 'constructs the url for the flickr image' do
       picture = subject.new(params)
 
-      expect(picture.original_url)
+      expect(picture.medium_url)
+        .to eq("http://farm#{params[:farm_id]}.staticflickr.com/#{params[:server_id]}/#{params[:id]}_#{params[:secret]}_c.jpg")
+    end
+  end
+
+  describe '#big_url' do
+    it 'constructs the url for the flickr image' do
+      picture = subject.new(params)
+
+      expect(picture.big_url)
         .to eq("http://farm#{params[:farm_id]}.staticflickr.com/#{params[:server_id]}/#{params[:id]}_#{params[:secret]}_b.jpg")
     end
   end

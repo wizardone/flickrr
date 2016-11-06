@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'register page' do
+RSpec.describe 'Register actions' do
   describe 'GET register' do
 
     it 'shows the register page' do
