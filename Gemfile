@@ -25,6 +25,7 @@ group :test do
   gem 'rspec'
   gem 'rack-test'
   gem 'vcr'
+  gem 'fakeweb'
   gem 'database_cleaner'
   gem 'codecov', require: false
 end

@@ -3,9 +3,11 @@ require 'spec_helper'
 RSpec.describe 'main page' do
   describe 'get /' do
     it 'shows the main page' do
-      get '/'
+      VCR.use_cassette('flickr_recent_photo') do
+        get '/'
 
-      expect(last_response).to be_ok
+        expect(last_response).to be_ok
+      end
     end
   end
 end

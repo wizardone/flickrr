@@ -3,12 +3,14 @@ require 'spec_helper'
 RSpec.describe 'main page' do
   describe 'GET logout' do
     it 'logs out the current user' do
-      get '/logout', nil, 'rack.session' => { user_id: 'some' }
+      VCR.use_cassette('flickr_recent_photo') do
+        get '/logout', nil, 'rack.session' => { user_id: 'some' }
 
-      follow_redirect!
+        follow_redirect!
 
-      expect(last_response).to be_ok
-      expect(last_request.url).to eq('http://example.org/')
+        expect(last_response).to be_ok
+        expect(last_request.url).to eq('http://example.org/')
+      end
     end
   end
 end

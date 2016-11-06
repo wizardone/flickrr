@@ -7,12 +7,14 @@ RSpec.describe 'Gallery actions' do
 
   context 'not logged in' do
     it 'redirects back to the main page' do
-      get '/search'
+      VCR.use_cassette('flickr_recent_photo') do
+        get '/search'
 
-      follow_redirect!
+        follow_redirect!
 
-      expect(last_response).to be_ok
-      expect(last_request.url).to eq('http://example.org/')
+        expect(last_response).to be_ok
+        expect(last_request.url).to eq('http://example.org/')
+      end
     end
   end
 
@@ -27,9 +29,11 @@ RSpec.describe 'Gallery actions' do
 
     describe 'GET gallery' do
       it 'searches for images in Flickr' do
-        get '/gallery', { search: { text: 'australia'} }, 'rack.session' => { user_id: user.id }
+        VCR.use_cassette('flickr_search') do
+          get '/gallery', { search: { text: 'australia'} }, 'rack.session' => { user_id: user.id }
 
-        expect(last_response).to be_ok
+          expect(last_response).to be_ok
+        end
       end
 
       it 'redirects back to the search page if no text is supplied' do
@@ -42,15 +46,19 @@ RSpec.describe 'Gallery actions' do
       end
 
       it 'saves the search query in the history' do
-        expect {
-          get '/gallery', { search: { text: 'australia'} }, 'rack.session' => { user_id: user.id }
-        }.to change { History.count }.by(1)
+        VCR.use_cassette('flickr_search') do
+          expect {
+            get '/gallery', { search: { text: 'australia'} }, 'rack.session' => { user_id: user.id }
+          }.to change { History.count }.by(1)
+        end
       end
 
       it 'does not save the search query in the history if you are going through pagination' do
-        expect {
-          get '/gallery', { search: { text: 'australia'}, page: 5 }, 'rack.session' => { user_id: user.id }
-        }.to_not change { History.count }
+        VCR.use_cassette('flickr_search') do
+          expect {
+            get '/gallery', { search: { text: 'australia'}, page: 5 }, 'rack.session' => { user_id: user.id }
+          }.to_not change { History.count }
+        end
       end
     end
   end
