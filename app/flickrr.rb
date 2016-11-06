@@ -15,15 +15,15 @@ class Flickrr < Sinatra::Base
 
   enable :sessions
 
-  before '/gallery' do
-    unless session[:user_id]
-      #redirect to('/')
+  before %r{/(gallery)|(search)} do
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    else
+      redirect to('/') and return
     end
   end
 
   get '/' do
-    # image paths
-    # https://www.flickr.com/services/api/misc.urls.html
     @random_image_url = Picture.from_flickr(FlickrService.new.recent_photo).original_url
     haml :main
   end

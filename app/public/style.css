@@ -5,3 +5,10 @@ html {
 body {
   margin: auto;
 }
+
+div.results {
+  float: left;
+}
+
+div.recent {
+}
