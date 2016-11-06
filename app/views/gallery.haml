@@ -13,4 +13,9 @@
           %br
           %br
           %input.btn.btn-default{ :name => "submit", :type => "submit", :value => "Search"}
-
+%div.recent
+  Recent searches:
+  - @current_user.histories.each do |history|
+    %p
+      You recently searched for:
+      = history.data
