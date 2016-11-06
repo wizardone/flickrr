@@ -1,11 +1,11 @@
+require 'simplecov'
+SimpleCov.start
+
 ENV['RACK_ENV'] = 'test'
 require 'database_cleaner'
 require 'rspec'
 require 'rack/test'
 require_relative '../app/flickrr'
-
-require 'simplecov'
-SimpleCov.start
 
 require 'codecov'
 SimpleCov.formatter = SimpleCov::Formatter::Codecov
