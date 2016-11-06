@@ -10,7 +10,6 @@ class Flickrr < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/search'
     else
-      # TODO: add the proper messages
       flash[:error] = 'Email or Password are invalid'
       redirect :login
     end

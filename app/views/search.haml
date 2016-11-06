@@ -18,8 +18,7 @@
     %p
       You don't seem to have any recent searches.
   -else
-    Recent searches:
-    - @current_user.histories.each do |history|
+    Last searches:
+    - @current_user.histories.ordered.each do |history|
       %p
-        You recently searched for:
         = history.data

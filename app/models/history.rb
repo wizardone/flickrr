@@ -1,6 +1,8 @@
 class History < ActiveRecord::Base
   belongs_to :user
 
+  scope :ordered, -> { order('id desc') }
+
   after_create :remove_old_history
 
   private

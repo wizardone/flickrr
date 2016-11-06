@@ -15,5 +15,6 @@ div.results {
   float: left;
 }
 
-div.recent {
+div.error {
+  color: red;
 }
