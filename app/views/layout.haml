@@ -4,14 +4,20 @@
     %link{ :rel => :stylesheet, :type => "text/css", :href => "style.css"}
   %body
     .box
+      %br
       -if session[:user_id]
         %p
-          Hi there!
+          Hi there,
+          = @current_user.email
+        %br
         %a{ :href => "/search", :title => "Logout" } Search
         |
         %a{ :href => "/logout", :title => "Logout" } Logout
       -else
         Hey there, in order to view photos you need to:
+        %br
+        %br
         %a{ :href => "/login", :title => "Login" } Login
+        or
         %a{ :href => "/register", :title => "Register" } Register
     =yield

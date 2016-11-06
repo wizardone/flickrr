@@ -20,8 +20,12 @@ class Picture
     "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}_t.jpg"
   end
 
-  def original_url
+  def big_url
     "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}_b.jpg"
+  end
+
+  def medium_url
+    "http://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}_c.jpg"
   end
 
   private

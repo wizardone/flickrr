@@ -3,7 +3,7 @@ Search results here:
 %br
 %div
   - @photos.each do |photo|
-    %a{href: "#{photo.original_url}", target: '_blank'}
+    %a{href: "#{photo.big_url}", target: '_blank'}
       %img(src="#{photo.thumb_url}")
   %br
   = will_paginate(@photos)
