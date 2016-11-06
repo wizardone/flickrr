@@ -12,7 +12,9 @@ RSpec.describe 'register page' do
 
   describe 'POST register' do
 
-    let(:data) { { user: { email: 'test@test.com', password: '1234567' } } }
+    let(:data) do
+      { user: { email: 'test@test.com', password: '12345', password_confirmation: '12345' } }
+    end
     it 'creates a new user' do
       expect {
         post '/register', data
@@ -24,7 +26,7 @@ RSpec.describe 'register page' do
       follow_redirect!
 
       expect(last_response).to be_ok
-      expect(last_request.url).to eq('http://example.org/gallery')
+      expect(last_request.url).to eq('http://example.org/search')
     end
 
     it 'renders the registration form if there are errors' do

@@ -9,14 +9,16 @@ RSpec.describe 'Login actions' do
     end
 
     it 'logs in the user' do
-      user = User.create(email: 'test@test.com', password: '12345')
+      user = User.create(email: 'test@test.com',
+                         password: '12345',
+                         password_confirmation: '12345')
 
       post '/login', { user: { email: user.email, password: '12345' } }
 
       follow_redirect!
 
       expect(last_response).to be_ok
-      expect(last_request.url).to eq('http://example.org/gallery')
+      expect(last_request.url).to eq('http://example.org/search')
     end
   end
 end

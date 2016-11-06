@@ -7,7 +7,7 @@ class Flickrr < Sinatra::Base
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect '/gallery'
+      redirect '/search'
     else
       # TODO: add the proper messages
       flash[:error] = 'Email or Password are invalid'

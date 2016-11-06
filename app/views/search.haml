@@ -1,8 +1,25 @@
-Search results here:
-%br
-%div.results
-  - @photos.each do |photo|
-    %a{href: "#{photo.original_url}", target: '_blank'}
-      %img(src="#{photo.thumb_url}")
-  %br
-  = will_paginate(@photos)
+.content
+  .container
+    .row
+      .col-lg-12
+        - if flash[:error]
+          =styled_flash
+        %form.form-horizontal{ :action => "/gallery", :method => "get", :role => "form"}
+          %h2= 'Search photos'
+          .form-group
+            %label.control-label.col-lg-2{ :for => "text"} Search in title, description or tags:
+            .col-lg-10
+              %input.form-control{ :name => "search[text]", :type => "text", :size => "30"}
+          %br
+          %br
+          %input.btn.btn-default{ :name => "submit", :type => "submit", :value => "Search"}
+%div.recent
+  - if @current_user.histories.empty?
+    %p
+      You don't seem to have any recent searches.
+  -else
+    Recent searches:
+    - @current_user.histories.each do |history|
+      %p
+        You recently searched for:
+        = history.data

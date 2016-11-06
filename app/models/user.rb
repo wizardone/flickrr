@@ -2,7 +2,8 @@ require 'digest/sha2'
 
 class User < ActiveRecord::Base
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, uniqueness: true
-  validates :password, presence: true
+  validates :password, presence: true, confirmation: true
+  validates :password_confirmation, presence: true
 
   has_many :histories, dependent: :destroy
 
