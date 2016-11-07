@@ -24,7 +24,11 @@ class Flickrr < Sinatra::Base
   end
 
   get '/' do
-    @random_image_url = Picture.from_flickr(FlickrService.new.recent_photo).medium_url
+    @random_image_url = FlickrService
+                        .new
+                        .recent_photo
+                        .medium_url
+
     haml :main
   end
 end
