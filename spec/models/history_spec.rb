@@ -3,8 +3,8 @@ require 'spec_helper'
 RSpec.describe History do
   let!(:user) do
     User.create(email: 'test@test.com',
-                password: '123',
-                password_confirmation: '123')
+                password: '1234',
+                password_confirmation: '1234')
   end
 
   context 'deletion of old search history' do

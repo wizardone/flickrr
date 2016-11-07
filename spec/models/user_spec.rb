@@ -15,7 +15,7 @@ RSpec.describe User do
       user = subject.new(password: nil)
 
       expect(user).not_to be_valid
-      expect(user.errors.messages).to include ({ password: ['can\'t be blank'] })
+      expect(user.errors.messages).to include ({ password: ['is too short (minimum is 4 characters)'] })
     end
   end
 

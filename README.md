@@ -7,7 +7,7 @@ A small app intended to retrieve and visualize data from Flickr. Build
 as a coding challenge. Build for about a total of *10-12 hours*
 It is deployed on Heroku, you can access it: [here](https://flickrr.herokuapp.com/).
 Please note that there is no typo in the name, it is simply called
-flickrr.
+*flickrr*. 99% of it is coded manually, without any external libraries.
 
 I sincerely hope it is not judged by its looks, because I don't stand a
 chance :)
@@ -23,9 +23,9 @@ chance :)
 Rails.
 - Flickr
   - A thin wrapper around the Flickr API. Pretty much all it does is
-perform the http requests
+forward the http requests.
 - Will paginate
-  - Paginating library
+  - Paginating library.
 
 ### Specs
 The project uses [TravisCI](https://travis-ci.org/wizardone/flickrr), information about the spec suite can be found
@@ -33,6 +33,14 @@ by clicking on the green (well, I hope it is green) build status icon.
 
 ### Code coverage
 Code coverage is provided by [codecov.io](https://codecov.io/gh/wizardone/flickrr)
+
+### Application specifics
+
+The app saves the last 10 searches of the user in order.
+The login/registration forms are extremely lightweight, there is no deep
+login involved.
+The main page shows the last public picture on Flickr, no matter whether
+someone is logged in or not.
 
 ### Install locally
 In case anybody actually wants to use this on his local machine there is
